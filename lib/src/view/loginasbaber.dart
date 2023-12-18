@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barberappointmentapp/src/view/signupasbabrber.dart';
 import 'login_as_customer.dart';
+import 'myhaircuts.dart';
 
 class Loginasbabrber extends StatelessWidget {
   Loginasbabrber({super.key});
@@ -81,7 +82,7 @@ class Loginasbabrber extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MyHaircuts()));},
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 80, 182, 172),
                   foregroundColor: Colors.black,
