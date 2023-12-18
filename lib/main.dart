@@ -1,3 +1,6 @@
+import 'package:barberappointmentapp/src/view/loginasbaber.dart';
+import 'package:barberappointmentapp/src/view/myhaircuts.dart';
+import 'package:barberappointmentapp/src/view/requests.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,12 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Barber Appointment App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: null,
+      home: Loginasbabrber(),
     );
   }
 }

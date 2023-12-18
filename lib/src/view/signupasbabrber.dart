@@ -1,8 +1,7 @@
-import 'package:barberappointmentapp/src/view/signupasbabrber.dart';
 import 'package:flutter/material.dart';
 
-class Loginasbabrber extends StatelessWidget {
-  Loginasbabrber({super.key});
+class SignupAsBarber extends StatelessWidget {
+  SignupAsBarber({super.key});
 
   final formkey = GlobalKey<FormState>();
 
@@ -20,14 +19,14 @@ class Loginasbabrber extends StatelessWidget {
                 TextButton(
                   onPressed: () {},
                   child: const Text(
-                    "Login",
+                    "Sign Up",
                     style: TextStyle(color: Colors.grey, fontSize: 28),
                   ),
                 ),
                 TextButton(
                   onPressed: () {},
                   child: const Text(
-                    "Login as Barber",
+                    "Sign Up as Barber",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 28,
@@ -40,6 +39,15 @@ class Loginasbabrber extends StatelessWidget {
             ),
             const SizedBox(
               height: 100,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Name",
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
@@ -59,25 +67,25 @@ class Loginasbabrber extends StatelessWidget {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 50.0),
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Forgot your password?",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
-                          decoration: TextDecoration.underline,
-                          decorationThickness: 2.0),
-                    ),
-                  ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Phone Number",
                 ),
-              ],
+              ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Address",
+                ),
+              ),
+            ),
+            const SizedBox(height: 10,),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
@@ -88,7 +96,7 @@ class Loginasbabrber extends StatelessWidget {
                   ),
                   fixedSize: const Size(360, 60)),
               child: const Text(
-                "Login",
+                "Sign Up",
                 style: TextStyle(fontSize: 22),
               ),
             ),
@@ -97,23 +105,17 @@ class Loginasbabrber extends StatelessWidget {
               padding: const EdgeInsets.only(left: 70.0),
               child: Row(
                 children: [
-                  const Text("Don't have an account?"),
+                  const Text("Already have an account?"),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignupAsBarber(),
-                        ),
-                      );
+                      Navigator.pop(context);
                     },
                     child: const Text(
-                      "Sign Up",
+                      "Login",
                       style: TextStyle(
-                        color: Colors.black,
-                        decoration: TextDecoration.underline,
-                        decorationThickness: 2.0,
-                      ),
+                          color: Colors.black,
+                          decoration: TextDecoration.underline,
+                          decorationThickness: 2.0,),
                     ),
                   )
                 ],
