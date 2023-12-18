@@ -1,8 +1,8 @@
 // views/barber_account.dart
+import 'package:barberappointmentapp/src/Model/barber_model.dart';
 import 'package:flutter/material.dart';
 
 
-import '../../Model/barber_model.dart'; 
 
 class BarberAccount extends StatelessWidget {
   final Barber barber;

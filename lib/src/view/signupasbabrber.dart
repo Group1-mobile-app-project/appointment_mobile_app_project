@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:start/src/view/sign_up_as_customer.dart';
+import 'package:barberappointmentapp/src/view/sign_up_as_customer.dart';
 
 class SignupAsBarber extends StatelessWidget {
   SignupAsBarber({super.key});

@@ -1,7 +1,6 @@
 // views/customer_view_barber_list.dart
 import 'package:flutter/material.dart';
-
-import '../../Model/barber_model.dart';
+import 'package:barberappointmentapp/src/Model/barber_model.dart';
 import 'customer_access_barber.dart';
 
 

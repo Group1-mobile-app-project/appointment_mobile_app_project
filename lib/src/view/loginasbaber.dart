@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:start/src/view/signupasbabrber.dart';
-
+import 'package:barberappointmentapp/src/view/signupasbabrber.dart';
 import 'login_as_customer.dart';
 
 class Loginasbabrber extends StatelessWidget {
