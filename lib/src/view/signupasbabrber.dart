@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:start/src/view/sign_up_as_customer.dart';
 
 class SignupAsBarber extends StatelessWidget {
   SignupAsBarber({super.key});
@@ -17,7 +18,8 @@ class SignupAsBarber extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUpAsCustomer()));
+},
                   child: const Text(
                     "Sign Up",
                     style: TextStyle(color: Colors.grey, fontSize: 28),

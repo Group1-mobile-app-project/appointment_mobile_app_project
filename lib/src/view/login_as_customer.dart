@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:start/src/view/sign_up_as_customer.dart';
 
-import 'package:start/src/view/signupasbabrber.dart';
 
-import 'login_as_customer.dart';
+import 'customer_reset_password.dart';
+import 'customer_view_barber_list.dart';
+import 'loginasbaber.dart';
 
-class Loginasbabrber extends StatelessWidget {
-  Loginasbabrber({super.key});
+class LoginAsCustomer extends StatelessWidget {
+  LoginAsCustomer({super.key});
 
   final formkey = GlobalKey<FormState>();
 
@@ -21,23 +23,24 @@ class Loginasbabrber extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginAsCustomer()));
-},
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(color: Colors.grey, fontSize: 28),
-                  ),
-                ),
-                TextButton(
                   onPressed: () {},
                   child: const Text(
-                    "Login as Barber",
+                    "Login",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 28,
                       decoration: TextDecoration.underline,
                       decorationThickness: 2.0,
                     ),
+                 
+                  ),
+                ),
+                TextButton(
+                  onPressed: () { Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Loginasbabrber()));
+},
+                  child: const Text(
+                    "Login as Barber",
+                       style: TextStyle(color: Colors.grey, fontSize: 28),
                   ),
                 ),
               ],
@@ -69,7 +72,8 @@ class Loginasbabrber extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 50.0),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CustomerResetPassword()));
+},
                     child: const Text(
                       "Forgot your password?",
                       style: TextStyle(
@@ -83,7 +87,7 @@ class Loginasbabrber extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CustomerViewBarberList()));},
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 80, 182, 172),
                   foregroundColor: Colors.black,
@@ -107,7 +111,7 @@ class Loginasbabrber extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SignupAsBarber(),
+                          builder: (context) => SignUpAsCustomer(),
                         ),
                       );
                     },

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:start/src/view/signupasbabrber.dart';
 
-import 'login_as_customer.dart';
-
-class Loginasbabrber extends StatelessWidget {
-  Loginasbabrber({super.key});
+class SignUpAsCustomer extends StatelessWidget {
+  SignUpAsCustomer({super.key});
 
   final formkey = GlobalKey<FormState>();
 
@@ -21,23 +18,23 @@ class Loginasbabrber extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginAsCustomer()));
-},
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(color: Colors.grey, fontSize: 28),
-                  ),
-                ),
-                TextButton(
                   onPressed: () {},
                   child: const Text(
-                    "Login as Barber",
+                    "Sign Up",
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 28,
                       decoration: TextDecoration.underline,
                       decorationThickness: 2.0,
                     ),
+                    
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignupAsBarber()));},
+                  child: const Text(
+                    "Sign Up as Barber",
+                    style: TextStyle(color: Colors.grey, fontSize: 28),
                   ),
                 ),
               ],
@@ -50,10 +47,29 @@ class Loginasbabrber extends StatelessWidget {
               child: TextFormField(
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
+                  hintText: "Name",
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
                   hintText: "Email",
                 ),
               ),
             ),
+              Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Phone Number",
+                ),
+              ),
+            ),
+            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
@@ -63,25 +79,8 @@ class Loginasbabrber extends StatelessWidget {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 50.0),
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "Forgot your password?",
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
-                          decoration: TextDecoration.underline,
-                          decorationThickness: 2.0),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          
+            const SizedBox(height: 10,),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
@@ -92,7 +91,7 @@ class Loginasbabrber extends StatelessWidget {
                   ),
                   fixedSize: const Size(360, 60)),
               child: const Text(
-                "Login",
+                "Sign Up",
                 style: TextStyle(fontSize: 22),
               ),
             ),
@@ -101,23 +100,17 @@ class Loginasbabrber extends StatelessWidget {
               padding: const EdgeInsets.only(left: 70.0),
               child: Row(
                 children: [
-                  const Text("Don't have an account?"),
+                  const Text("Already have an account?"),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignupAsBarber(),
-                        ),
-                      );
+                      Navigator.pop(context);
                     },
                     child: const Text(
-                      "Sign Up",
+                      "Login",
                       style: TextStyle(
-                        color: Colors.black,
-                        decoration: TextDecoration.underline,
-                        decorationThickness: 2.0,
-                      ),
+                          color: Colors.black,
+                          decoration: TextDecoration.underline,
+                          decorationThickness: 2.0,),
                     ),
                   )
                 ],
