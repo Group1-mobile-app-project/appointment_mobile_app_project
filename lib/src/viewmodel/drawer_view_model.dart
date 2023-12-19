@@ -1,3 +1,5 @@
+import 'package:barberappointmentapp/src/view/myhaircuts.dart';
+import 'package:barberappointmentapp/src/view/requests.dart';
 import 'package:flutter/material.dart';
 
 class DrawerViewModel extends ChangeNotifier {
@@ -9,4 +11,21 @@ class DrawerViewModel extends ChangeNotifier {
     _selectedIndex = index;
     notifyListeners();
   }
+
+
+//   void selectedItem(BuildContext context, int index) {
+//   Navigator.of(context).pop();
+//   switch (index) {
+//     case 0:
+//       Navigator.of(context).push(MaterialPageRoute(
+//         builder: (context) => const MyHaircuts(),
+//       ));
+//       break;
+//     case 1:
+//       Navigator.of(context).push(MaterialPageRoute(
+//         builder: (context) => const Requests(),
+//       ));
+//       break;
+//   }
+// }
 }

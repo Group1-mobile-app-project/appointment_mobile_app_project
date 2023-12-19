@@ -1,12 +1,12 @@
+import 'package:barberappointmentapp/src/viewmodel/drawer_view_model.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 
 class MyHaircuts extends StatelessWidget {
   const MyHaircuts({super.key});
 
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -16,7 +16,7 @@ class MyHaircuts extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 80, 182, 172),
       ),
-       drawer: Drawer(
+      drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -25,7 +25,7 @@ class MyHaircuts extends StatelessWidget {
                 color: Color.fromARGB(255, 80, 182, 172),
               ),
               child: Text(
-                'Drawer Header',
+                'Barber Appointment App',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -41,6 +41,8 @@ class MyHaircuts extends StatelessWidget {
             ListTile(
               title: const Text('Requests'),
               onTap: () {
+                // Provider.of<DrawerViewModel>(context, listen: false)
+                //     .selectedItem(context, 1);
                 Navigator.pop(context);
               },
             ),
