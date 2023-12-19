@@ -1,7 +1,9 @@
 import 'package:barberappointmentapp/src/view/loginasbaber.dart';
-import 'package:barberappointmentapp/src/view/myhaircuts.dart';
-import 'package:barberappointmentapp/src/view/requests.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'src/viewmodel/barber_login_viewmodel.dart';
+import 'src/viewmodel/customer_login_viewmodel.dart';
+import 'src/viewmodel/drawer_view_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +14,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+     return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => BarberLoginViewModel()),
+        ChangeNotifierProvider(create: (_) => CustomerLoginViewModel()),
+        ChangeNotifierProvider(create: (_) => DrawerViewModel()),
+      ],
+    child: MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Barber Appointment App',
       theme: ThemeData(
@@ -20,7 +28,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: Loginasbabrber(),
-    );
+    ));
   }
 }
 

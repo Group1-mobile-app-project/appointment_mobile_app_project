@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:barberappointmentapp/src/view/signupasbabrber.dart';
+import 'package:provider/provider.dart';
+import '../viewmodel/barber_login_viewmodel.dart';
+import 'customer_reset_password.dart';
 import 'login_as_customer.dart';
-import 'myhaircuts.dart';
+
 
 class Loginasbabrber extends StatelessWidget {
   Loginasbabrber({super.key});
@@ -10,6 +13,7 @@ class Loginasbabrber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = Provider.of<BarberLoginViewModel>(context);
     return Scaffold(
       body: Form(
         key: formkey,
@@ -47,6 +51,7 @@ class Loginasbabrber extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                onChanged: (value) => viewModel.setEmail(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Email",
@@ -56,6 +61,7 @@ class Loginasbabrber extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                onChanged: (value) => viewModel.setPassword(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Password",
@@ -68,7 +74,7 @@ class Loginasbabrber extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 50.0),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CustomerResetPassword()));},
                     child: const Text(
                       "Forgot your password?",
                       style: TextStyle(
@@ -82,7 +88,7 @@ class Loginasbabrber extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-              onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MyHaircuts()));},
+              onPressed: () => viewModel.login(context),
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 80, 182, 172),
                   foregroundColor: Colors.black,

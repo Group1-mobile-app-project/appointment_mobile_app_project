@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:barberappointmentapp/src/view/sign_up_as_customer.dart';
+import 'package:provider/provider.dart';
+import '../viewmodel/customer_login_viewmodel.dart';
 import 'customer_reset_password.dart';
-import 'customer_view_barber_list.dart';
 import 'loginasbaber.dart';
 
 class LoginAsCustomer extends StatelessWidget {
@@ -11,6 +12,8 @@ class LoginAsCustomer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      // ignore: unused_local_variable
+      final viewModel = Provider.of<CustomerLoginViewModel>(context);
     return Scaffold(
       body: Form(
         key: formkey,
@@ -49,6 +52,7 @@ class LoginAsCustomer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                onChanged: (value) => viewModel.setEmail(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Email",
@@ -58,6 +62,7 @@ class LoginAsCustomer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                onChanged: (value) => viewModel.setPassword(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Password",
@@ -85,7 +90,7 @@ class LoginAsCustomer extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-              onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CustomerViewBarberList()));},
+            onPressed: () => viewModel.login(context),
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 80, 182, 172),
                   foregroundColor: Colors.black,

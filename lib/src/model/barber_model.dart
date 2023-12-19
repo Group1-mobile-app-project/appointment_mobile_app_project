@@ -1,4 +1,4 @@
-// models/barber_model.dart
+
 class Barber {
   final String name;
   final String imagePath;

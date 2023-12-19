@@ -1,6 +1,8 @@
 // views/customer_view_barber_list.dart
 import 'package:flutter/material.dart';
 import 'package:barberappointmentapp/src/Model/barber_model.dart';
+import 'package:provider/provider.dart';
+import '../viewmodel/drawer_view_model.dart';
 import 'customer_access_barber.dart';
 
 
@@ -21,6 +23,54 @@ class CustomerViewBarberList extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Barber List'),
                      backgroundColor: const Color.fromARGB(255, 80, 182, 172),
+      ),
+       drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 80, 182, 172),
+              ),
+              child: Text(
+                'Drawer Header',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              title: const Text('Barber List'),
+              onTap: () {
+                Provider.of<DrawerViewModel>(context, listen: false).setIndex(0);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('My Requests'),
+              onTap: () {
+                Provider.of<DrawerViewModel>(context, listen: false).setIndex(0);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Search'),
+              onTap: () {
+                Provider.of<DrawerViewModel>(context, listen: false).setIndex(0);
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Profile'),
+              onTap: () {
+                Provider.of<DrawerViewModel>(context, listen: false).setIndex(0);
+                Navigator.pop(context);
+              },
+            ),
+            
+          ],
+        ),
       ),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
