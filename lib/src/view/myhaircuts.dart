@@ -1,3 +1,4 @@
+import 'package:barberappointmentapp/src/view/requests.dart';
 import 'package:flutter/material.dart';
 
 class MyHaircuts extends StatelessWidget {
@@ -33,14 +34,18 @@ class MyHaircuts extends StatelessWidget {
             ListTile(
               title: const Text('My Haircuts'),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Requests(),
+                  ),
+                );
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: const Text('Requests'),
               onTap: () {
-                // Provider.of<DrawerViewModel>(context, listen: false)
-                //     .selectedItem(context, 1);
                 Navigator.pop(context);
               },
             ),
