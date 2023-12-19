@@ -1,5 +1,3 @@
-import 'package:barberappointmentapp/src/view/myhaircuts.dart';
-import 'package:barberappointmentapp/src/view/requests.dart';
 import 'package:flutter/material.dart';
 
 class DrawerViewModel extends ChangeNotifier {
