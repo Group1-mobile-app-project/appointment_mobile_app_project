@@ -5,7 +5,6 @@ import '../viewmodel/barber_login_viewmodel.dart';
 import 'customer_reset_password.dart';
 import 'login_as_customer.dart';
 
-
 class Loginasbabrber extends StatelessWidget {
   Loginasbabrber({super.key});
 
@@ -24,8 +23,14 @@ class Loginasbabrber extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginAsCustomer()));
-},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginAsCustomer(),
+                      ),
+                    );
+                  },
                   child: const Text(
                     "Login",
                     style: TextStyle(color: Colors.grey, fontSize: 28),
@@ -74,7 +79,14 @@ class Loginasbabrber extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 50.0),
                   child: TextButton(
-                    onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CustomerResetPassword()));},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CustomerResetPassword(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "Forgot your password?",
                       style: TextStyle(
