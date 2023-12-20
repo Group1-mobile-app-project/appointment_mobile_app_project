@@ -4,6 +4,7 @@ import 'package:barberappointmentapp/src/Model/barber_model.dart';
 import 'package:provider/provider.dart';
 import '../viewmodel/drawer_view_model.dart';
 import 'customer_access_barber.dart';
+import 'login_as_customer.dart';
 
 
 class CustomerViewBarberList extends StatelessWidget {
@@ -68,7 +69,13 @@ class CustomerViewBarberList extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-            
+             ListTile(
+              title: const Text('Logout'),
+              onTap: () {
+                Provider.of<DrawerViewModel>(context, listen: false).setIndex(0);
+               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  LoginAsCustomer()));
+              },
+            ),
           ],
         ),
       ),

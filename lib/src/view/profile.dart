@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'loginasbaber.dart';
+import 'managehaircuts.dart';
+import 'myhaircuts.dart';
+import 'requests.dart';
+import 'status.dart';
+
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
@@ -14,7 +20,7 @@ class ProfilePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 80, 182, 172),
       ),
-      drawer: Drawer(
+       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -23,7 +29,7 @@ class ProfilePage extends StatelessWidget {
                 color: Color.fromARGB(255, 80, 182, 172),
               ),
               child: Text(
-                'Drawer Header',
+                'Barber Appointment App',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -31,27 +37,39 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: const Text('Barber List'),
+              title: const Text('My Haircuts'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MyHaircuts()));
               },
             ),
             ListTile(
-              title: const Text('My Requests'),
+              title: const Text('Requests'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Requests()));
               },
             ),
             ListTile(
-              title: const Text('Search'),
+              title: const Text('Manage Haircut'),
               onTap: () {
-                Navigator.pop(context);
+               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ManageHaircuts()));
               },
             ),
             ListTile(
               title: const Text('Status'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const StatusPage()));
+              },
+            ),
+            ListTile(
+              title: const Text('Profile'),
+              onTap: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
+              },
+            ),
+             ListTile(
+              title: const Text('Logout'),
+              onTap: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  Loginasbabrber()));
               },
             ),
           ],

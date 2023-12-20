@@ -1,6 +1,11 @@
 import 'package:barberappointmentapp/src/view/requests.dart';
 import 'package:flutter/material.dart';
 
+import 'loginasbaber.dart';
+import 'managehaircuts.dart';
+import 'profile.dart';
+import 'status.dart';
+
 class MyHaircuts extends StatelessWidget {
   const MyHaircuts({super.key});
 
@@ -34,37 +39,37 @@ class MyHaircuts extends StatelessWidget {
             ListTile(
               title: const Text('My Haircuts'),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Requests(),
-                  ),
-                );
-                Navigator.pop(context);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MyHaircuts()));
               },
             ),
             ListTile(
               title: const Text('Requests'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Requests()));
               },
             ),
             ListTile(
               title: const Text('Manage Haircut'),
               onTap: () {
-                Navigator.pop(context);
+               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ManageHaircuts()));
               },
             ),
             ListTile(
               title: const Text('Status'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const StatusPage()));
               },
             ),
             ListTile(
               title: const Text('Profile'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
+              },
+            ),
+             ListTile(
+              title: const Text('Logout'),
+              onTap: () {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  Loginasbabrber()));
               },
             ),
           ],
