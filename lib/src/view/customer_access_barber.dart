@@ -12,7 +12,7 @@ class BarberAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Barber Account'),
+        title: const Text('Anis BarberShop'),
         backgroundColor: const Color.fromARGB(255, 80, 182, 172),
       ),
       body: Column(
