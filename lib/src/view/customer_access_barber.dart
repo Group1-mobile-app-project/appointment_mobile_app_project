@@ -1,128 +1,101 @@
+// views/barber_account.dart
 import 'package:barberappointmentapp/src/Model/barber_model.dart';
+import 'package:barberappointmentapp/src/view/Haircut_style.dart';
 import 'package:flutter/material.dart';
 
 class BarberAccount extends StatelessWidget {
   final Barber barber;
 
-  const BarberAccount({Key? key, required this.barber}) : super(key: key);
+  const BarberAccount({super.key, required this.barber});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Barber Shop'),
+        title: const Text('Barber Account'),
         backgroundColor: const Color.fromARGB(255, 80, 182, 172),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(height: 16),
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              width: 200,
-              height: 150,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(8.0),
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(barber.imagePath),
-                ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  Container(
+                    width: 200,
+                    height: 200,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(100)),
+                    child: Image.network(
+                        'https://www.thesqcamberley.co.uk/wp-content/uploads/2017/12/anis-logo.jpeg'),
+                  ),
+                  const Text(
+                    "Anis barber Shop",
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                  const Text("Phonenumber:2953"),
+                  const Text(
+                    "Location",
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                  const Row(
+                    children: [
+                      MyWidget(),
+                      SizedBox(width: 20),
+                      MyWidget(),
+                    ],
+                  ),
+                ],
               ),
+            ],
+          ),
+          Container(
+            width: 320,
+            height: 100,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: Colors.black,
+              ),
+              color: Colors.grey[200],
+            ),
+            child: TextField(
+              decoration: const InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                labelText: 'input appointment time and date',
+              ),
+              onChanged: (value) {
+                print('Input: $value');
+              },
             ),
           ),
-          const SizedBox(height: 16),
-          Text(
-            barber.name,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 16),
-          const Text(
-            "Phone Number: 0000121",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 16),
-          const Text(
-            "Location",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+          Container(
+            width: 310,
+            height: 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(
+                color: Colors.black,
+              ),
               color: Colors.blue,
             ),
-          ),
-          const SizedBox(height: 16),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 8.0,
-              mainAxisSpacing: 8.0,
-            ),
-            itemCount: 2,
-            itemBuilder: (context, index) {
-              return Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(8.0),
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(barber.imagePath),
-                  ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Name ${index + 1}',
-                      style: const TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-          const SizedBox(height: 24),
-         
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                const TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Please Write the time to make an appointment',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 80, 182, 172),
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  fixedSize: const Size(360, 60)),
+            child: TextButton(
+              onPressed: () {
+                print('Submit Button Pressed');
+              },
               child: const Text(
-                "Submit",
-                style: TextStyle(fontSize: 22),
+                'Submit',
+                style: TextStyle(
+                  color: Colors.white, // Text color
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-              ],
-            ),
-          ),
+          )
         ],
       ),
     );
