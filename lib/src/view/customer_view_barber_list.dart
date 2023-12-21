@@ -59,8 +59,14 @@ class CustomerViewBarberList extends StatelessWidget {
               onTap: () {
                 Provider.of<DrawerViewModel>(context, listen: false)
                     .setIndex(0);
-                Navigator.pop(context);
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          CustomerViewBarberList()), // Replace CPage() with your page
+                );
               },
+              
             ),
             ListTile(
               title: const Text('My Requests'),

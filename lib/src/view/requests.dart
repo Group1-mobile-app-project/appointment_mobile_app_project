@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Costomer_profile.dart';
 import 'loginasbaber.dart';
 import 'managehaircuts.dart';
 import 'myhaircuts.dart';
@@ -63,7 +64,7 @@ class Requests extends StatelessWidget {
             ListTile(
               title: const Text('Profile'),
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfileC()));
               },
             ),
              ListTile(
