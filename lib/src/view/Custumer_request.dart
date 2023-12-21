@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../viewmodel/drawer_view_model.dart';
 import 'login_as_customer.dart';
-import 'profile.dart';
+
 
 class CRequests extends StatelessWidget {
   const CRequests({super.key});
@@ -48,7 +48,7 @@ class CRequests extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          CustomerViewBarberList()), // Replace CPage() with your page
+                          CustomerViewBarberList()), 
                 );
               },
               
@@ -63,7 +63,7 @@ class CRequests extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          CRequests()), // Replace CPage() with your page
+                          const CRequests()), 
                 );
               },
             ),
@@ -77,7 +77,7 @@ class CRequests extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          Searchw()), // Replace CPage() with your page
+                          const Searchw()), 
                 );
               },
             ),
@@ -91,7 +91,7 @@ class CRequests extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          ProfileC()), // Replace CPage() with your page
+                          const ProfileC()), 
                 );
               },
             ),
@@ -107,7 +107,7 @@ class CRequests extends StatelessWidget {
           ],
         ),
       ),
-        body: Column(
+        body: const Column(
           children: [
             Customerm(),
             Customerm(),

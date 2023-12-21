@@ -4,7 +4,6 @@ import 'Costomer_profile.dart';
 import 'loginasbaber.dart';
 import 'managehaircuts.dart';
 import 'myhaircuts.dart';
-import 'profile.dart';
 import 'status.dart';
 
 class Requests extends StatelessWidget {

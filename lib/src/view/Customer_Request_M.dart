@@ -12,7 +12,7 @@ class Customerm extends StatelessWidget {
           height: 80,
           decoration: BoxDecoration(
               color: Colors.grey, borderRadius: BorderRadius.circular(12)),
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(

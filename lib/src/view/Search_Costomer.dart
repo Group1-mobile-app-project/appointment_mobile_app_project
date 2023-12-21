@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../viewmodel/drawer_view_model.dart';
 import 'login_as_customer.dart';
-import 'profile.dart';
+
 
 class Searchw extends StatelessWidget {
   const Searchw({super.key});
@@ -48,7 +48,7 @@ class Searchw extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          CustomerViewBarberList()), // Replace CPage() with your page
+                          CustomerViewBarberList()), 
                 );
               },
               
@@ -63,7 +63,7 @@ class Searchw extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          CRequests()), // Replace CPage() with your page
+                          const CRequests()), 
                 );
               },
             ),
@@ -77,7 +77,7 @@ class Searchw extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          Searchw()), // Replace CPage() with your page
+                          const Searchw()), 
                 );
               },
             ),
@@ -91,7 +91,7 @@ class Searchw extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          ProfileC()), // Replace CPage() with your page
+                          const ProfileC()), 
                 );
               },
             ),
@@ -111,13 +111,14 @@ class Searchw extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
+              // ignore: sized_box_for_whitespace
               child: Container(
                 width: 400,
                 height: 40,
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: 'Search...',
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
@@ -130,7 +131,7 @@ class Searchw extends StatelessWidget {
                 ),
               ),
             ),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 MyWidget(),

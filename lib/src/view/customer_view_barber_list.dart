@@ -63,7 +63,7 @@ class CustomerViewBarberList extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          CustomerViewBarberList()), // Replace CPage() with your page
+                          CustomerViewBarberList()), 
                 );
               },
               
@@ -78,7 +78,7 @@ class CustomerViewBarberList extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          CRequests()), // Replace CPage() with your page
+                          const CRequests()), 
                 );
               },
             ),
@@ -92,7 +92,7 @@ class CustomerViewBarberList extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          Searchw()), // Replace CPage() with your page
+                          const Searchw()), 
                 );
               },
             ),
@@ -106,7 +106,7 @@ class CustomerViewBarberList extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          ProfileC()), // Replace CPage() with your page
+                          const ProfileC()), 
                 );
               },
             ),
@@ -124,7 +124,7 @@ class CustomerViewBarberList extends StatelessWidget {
       ),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, // 2 items per row
+          crossAxisCount: 2, 
           crossAxisSpacing: 8.0,
           mainAxisSpacing: 8.0,
         ),

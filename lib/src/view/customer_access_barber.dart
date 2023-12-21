@@ -89,7 +89,7 @@ class BarberAccount extends StatelessWidget {
               child: const Text(
                 'Submit',
                 style: TextStyle(
-                  color: Colors.white, // Text color
+                  color: Colors.white, 
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),

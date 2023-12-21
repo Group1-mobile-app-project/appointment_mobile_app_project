@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../viewmodel/drawer_view_model.dart';
 import 'login_as_customer.dart';
-import 'profile.dart';
+
 
 class ProfileC extends StatelessWidget {
   const ProfileC({super.key});
@@ -47,7 +47,7 @@ class ProfileC extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          CustomerViewBarberList()), // Replace CPage() with your page
+                          CustomerViewBarberList()), 
                 );
               },
               
@@ -62,7 +62,7 @@ class ProfileC extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          CRequests()), // Replace CPage() with your page
+                          const CRequests()), 
                 );
               },
             ),
@@ -76,7 +76,7 @@ class ProfileC extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          Searchw()), // Replace CPage() with your page
+                          const Searchw()), 
                 );
               },
             ),
@@ -90,7 +90,7 @@ class ProfileC extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) =>
-                          ProfileC()), // Replace CPage() with your page
+                          const ProfileC()), 
                 );
               },
             ),
@@ -126,14 +126,14 @@ class ProfileC extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Name',
                     ),
                     onChanged: (value) {
-                      // Handle the input changes here
+                      
                       print('Input: $value');
                     },
                   ),
@@ -150,14 +150,14 @@ class ProfileC extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Phone number',
                     ),
                     onChanged: (value) {
-                      // Handle the input changes here
+                      
                       print('Input: $value');
                     },
                   ),
@@ -181,7 +181,7 @@ class ProfileC extends StatelessWidget {
                 child: const Text(
                   'Update',
                   style: TextStyle(
-                    color: Colors.white, // Text color
+                    color: Colors.white, 
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
