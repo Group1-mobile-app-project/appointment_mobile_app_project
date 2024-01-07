@@ -1,11 +1,8 @@
-import 'package:barberappointmentapp/src/view/Custumer_request.dart';
-import 'package:barberappointmentapp/src/view/Search_Costomer.dart';
-import 'package:barberappointmentapp/src/view/customer_view_barber_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../model/customer_model.dart';
 import '../viewmodel/drawer_view_model.dart';
-import 'login_as_customer.dart';
 
 
 class ProfileC extends StatelessWidget {
@@ -13,6 +10,7 @@ class ProfileC extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        CustomerModel customer = customerList.first;
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -26,81 +24,61 @@ class ProfileC extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
+             DrawerHeader(
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 80, 182, 172),
               ),
-              child: Text(
-                'Drawer Header',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  
+                  Text(
+                    'Welcome, ${customer.name}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    'Your Email: ${customer.email}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
               ),
             ),
             ListTile(
               title: const Text('Barber List'),
               onTap: () {
-                Provider.of<DrawerViewModel>(context, listen: false)
-                    .setIndex(0);
-                  Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          CustomerViewBarberList()), 
-                );
+                Provider.of<DrawerViewModel>(context, listen: false).setIndex(0, context);
               },
               
             ),
             ListTile(
               title: const Text('My Requests'),
               onTap: () {
-                Provider.of<DrawerViewModel>(context, listen: false)
-                    .setIndex(0);
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const CRequests()), 
-                );
+               Provider.of<DrawerViewModel>(context, listen: false).setIndex(1, context);
               },
             ),
             ListTile(
               title: const Text('Search'),
               onTap: () {
-                Provider.of<DrawerViewModel>(context, listen: false)
-                    .setIndex(0);
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const Searchw()), 
-                );
+                Provider.of<DrawerViewModel>(context, listen: false).setIndex(2, context);
               },
             ),
             ListTile(
               title: const Text('Profile'),
               onTap: () {
-                Provider.of<DrawerViewModel>(context, listen: false)
-                    .setIndex(0);
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          const ProfileC()), 
-                );
+                Provider.of<DrawerViewModel>(context, listen: false).setIndex(3, context);
               },
             ),
             ListTile(
               title: const Text('Logout'),
               onTap: () {
-                Provider.of<DrawerViewModel>(context, listen: false)
-                    .setIndex(0);
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LoginAsCustomer()));
+                Provider.of<DrawerViewModel>(context, listen: false).setIndex(4, context);
               },
             ),
           ],

@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
-
 import '../view/myhaircuts.dart';
+import '../model/barber_model.dart';
 
 class BarberLoginViewModel extends ChangeNotifier {
-  String email = 'pairaw2@gmail.com';
-  String password = '12345';
+  String email = '';
+  String password = '';
 
   void setEmail(String value) {
     email = value;
@@ -17,17 +17,21 @@ class BarberLoginViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> login(BuildContext context) async {
-  if (email == 'pairaw2@gmail.com' && password == '12345') {
-     
+  Future<void> loginBarber(BuildContext context, List<Barber> barberList) async {
+    final authenticatedBarber = barberList.firstWhere(
+      (barber) => barber.email == email && barber.password == password,
+      orElse: () => Barber(email: '', password: '', name: '', imagePath: ''),
+    );
+
+    if (authenticatedBarber.email!.isNotEmpty) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const MyHaircuts(), 
+          builder: (context) => const MyHaircuts(),
         ),
       );
     } else {
- showDialog(
+      showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
@@ -46,4 +50,4 @@ class BarberLoginViewModel extends ChangeNotifier {
       );
     }
   }
-  }
+}

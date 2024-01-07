@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barberappointmentapp/src/view/sign_up_as_customer.dart';
 import 'package:provider/provider.dart';
+import '../model/customer_model.dart';
 import '../viewmodel/customer_login_viewmodel.dart';
 import 'customer_reset_password.dart';
 import 'loginasbaber.dart';
@@ -90,7 +91,7 @@ class LoginAsCustomer extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-            onPressed: () => viewModel.login(context),
+            onPressed: () => viewModel.loginCustomer(context,customerList),
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 80, 182, 172),
                   foregroundColor: Colors.black,

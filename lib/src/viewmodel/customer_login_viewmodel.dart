@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
-
+import '../model/customer_model.dart';
 import '../view/customer_view_barber_list.dart';
 
 class CustomerLoginViewModel extends ChangeNotifier {
-  String email = 'pairaw@gmail.com';
-  String password = '1234';
+  String email = '';
+  String password = '';
 
   void setEmail(String value) {
     email = value;
@@ -17,18 +16,21 @@ class CustomerLoginViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> login(BuildContext context) async {
-if (email == 'pairaw@gmail.com' && password == '1234') {
-     
+  Future<void> loginCustomer(BuildContext context, List<CustomerModel> customerList) async {
+    final authenticatedCustomer = customerList.firstWhere(
+      (barber) => barber.email == email && barber.password == password,
+      orElse: () => CustomerModel(email: '', password: '', name: '', imagePath: ''),
+    );
+
+    if (authenticatedCustomer.email.isNotEmpty) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => CustomerViewBarberList(), 
+          builder: (context) =>  CustomerViewBarberList(),
         ),
       );
     } else {
- 
-  showDialog(
+      showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
@@ -37,7 +39,7 @@ if (email == 'pairaw@gmail.com' && password == '1234') {
             actions: <Widget>[
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop(); 
+                  Navigator.of(context).pop();
                 },
                 child: const Text('OK'),
               ),
@@ -48,4 +50,3 @@ if (email == 'pairaw@gmail.com' && password == '1234') {
     }
   }
 }
-
