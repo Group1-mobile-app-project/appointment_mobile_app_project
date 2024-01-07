@@ -18,8 +18,12 @@ class SignupAsBarber extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUpAsCustomer()));
-},
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignUpAsCustomer()));
+                  },
                   child: const Text(
                     "Sign Up",
                     style: TextStyle(color: Colors.grey, fontSize: 28),
@@ -87,7 +91,9 @@ class SignupAsBarber extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 10,),
+            const SizedBox(
+              height: 10,
+            ),
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
@@ -115,9 +121,10 @@ class SignupAsBarber extends StatelessWidget {
                     child: const Text(
                       "Login",
                       style: TextStyle(
-                          color: Colors.black,
-                          decoration: TextDecoration.underline,
-                          decorationThickness: 2.0,),
+                        color: Colors.black,
+                        decoration: TextDecoration.underline,
+                        decorationThickness: 2.0,
+                      ),
                     ),
                   )
                 ],

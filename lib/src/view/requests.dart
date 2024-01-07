@@ -1,4 +1,6 @@
+import 'package:barberappointmentapp/src/viewmodel/barber_requests_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'Costomer_profile.dart';
 import 'loginasbaber.dart';
@@ -11,6 +13,7 @@ class Requests extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = Provider.of<BarberRequestViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -93,8 +96,12 @@ class Requests extends StatelessWidget {
                 ),
               ],
               onSelected: (String value) {
-                if (value == "accept") {}
-                if (value == "cancel") {}
+                if (value == "accept") {
+                  viewModel.accept(context);
+                }
+                if (value == "cancel") {
+                  viewModel.cancel(context);
+                }
               },
             ),
           );
