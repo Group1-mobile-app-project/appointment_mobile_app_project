@@ -1,4 +1,6 @@
+import 'package:barberappointmentapp/src/viewmodel/profile_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'loginasbaber.dart';
 import 'managehaircuts.dart';
@@ -11,6 +13,7 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final profileViewModel = Provider.of<ProfileViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -20,7 +23,7 @@ class ProfilePage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 80, 182, 172),
       ),
-       drawer: Drawer(
+      drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -39,37 +42,51 @@ class ProfilePage extends StatelessWidget {
             ListTile(
               title: const Text('My Haircuts'),
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MyHaircuts()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MyHaircuts()));
               },
             ),
             ListTile(
               title: const Text('Requests'),
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Requests()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => const Requests()));
               },
             ),
             ListTile(
               title: const Text('Manage Haircut'),
               onTap: () {
-               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ManageHaircuts()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ManageHaircuts()));
               },
             ),
             ListTile(
               title: const Text('Status'),
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const StatusPage()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const StatusPage()));
               },
             ),
             ListTile(
               title: const Text('Profile'),
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfilePage()));
               },
             ),
-             ListTile(
+            ListTile(
               title: const Text('Logout'),
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  Loginasbabrber()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => Loginasbabrber()));
               },
             ),
           ],
@@ -112,7 +129,9 @@ class ProfilePage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                await profileViewModel.updateProfile(context);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromARGB(255, 80, 182, 172),
                 foregroundColor: Colors.black,

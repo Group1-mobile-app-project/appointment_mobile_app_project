@@ -13,7 +13,7 @@ class ManageHaircuts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<ManageHaircutViewModel>(context);
+    final ViewModel = Provider.of<ManageHaircutViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -110,10 +110,10 @@ class ManageHaircuts extends StatelessWidget {
               ],
               onSelected: (String value) {
                 if (value == "change") {
-                  viewModel.change(context);
+                  ViewModel.change(context);
                 }
                 if (value == "delete") {
-                  viewModel.delete(context);
+                  ViewModel.delete(context);
                 }
               },
             ),

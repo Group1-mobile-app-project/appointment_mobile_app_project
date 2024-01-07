@@ -7,7 +7,7 @@ class ManageHaircutViewModel extends ChangeNotifier {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Delete'),
-          content: const Text('are you sure you want to delete?'),
+          content: const Text('Are you sure you want to delete?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
