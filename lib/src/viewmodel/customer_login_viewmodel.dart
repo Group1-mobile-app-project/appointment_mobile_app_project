@@ -18,7 +18,7 @@ class CustomerLoginViewModel extends ChangeNotifier {
 
   Future<void> loginCustomer(BuildContext context, List<CustomerModel> customerList) async {
     final authenticatedCustomer = customerList.firstWhere(
-      (barber) => barber.email == email && barber.password == password,
+      (customer) => customer.email == email && customer.password == password,
       orElse: () => CustomerModel(email: '', password: '', name: '', imagePath: ''),
     );
 
