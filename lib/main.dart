@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'src/viewmodel/barber_login_viewmodel.dart';
 import 'src/viewmodel/customer_login_viewmodel.dart';
+import 'src/viewmodel/customer_signUp_viewmodel.dart';
 import 'src/viewmodel/drawer_view_model.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -35,6 +36,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProfileViewModel()),
         ChangeNotifierProvider(create: (_) => StatusViewModel()),
         ChangeNotifierProvider(create: (_) => BarberSignUpViewModel()),
+        ChangeNotifierProvider(create: (_) => CustomerSignUpViewModel()),
+        
       ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,

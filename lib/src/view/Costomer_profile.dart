@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../model/customer_model.dart';
 import '../viewmodel/drawer_view_model.dart';
 
 
@@ -10,7 +8,7 @@ class ProfileC extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        CustomerModel customer = customerList.first;
+        
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -24,29 +22,15 @@ class ProfileC extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-             DrawerHeader(
-              decoration: const BoxDecoration(
+             const DrawerHeader(
+              decoration: BoxDecoration(
                 color: Color.fromARGB(255, 80, 182, 172),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   
-                  Text(
-                    'Welcome, ${customer.name}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Your Email: ${customer.email}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
+                 
                 ],
               ),
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barberappointmentapp/src/view/sign_up_as_customer.dart';
 import 'package:provider/provider.dart';
-import '../model/customer_model.dart';
+import '../controller/customer_reset_password_controller.dart';
 import '../viewmodel/customer_login_viewmodel.dart';
 import 'customer_reset_password.dart';
 import 'loginasbaber.dart';
@@ -76,7 +76,15 @@ class LoginAsCustomer extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 50.0),
                   child: TextButton(
-                    onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => CustomerResetPassword()));
+                    onPressed: () {
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => CustomerResetPassword(
+        controller: CustomerResetPasswordController(),
+      ),
+    ),
+  );
 },
                     child: const Text(
                       "Forgot your password?",
@@ -91,7 +99,7 @@ class LoginAsCustomer extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-            onPressed: () => viewModel.loginCustomer(context,customerList),
+            onPressed: () => viewModel.loginCustomer(context),
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 80, 182, 172),
                   foregroundColor: Colors.black,

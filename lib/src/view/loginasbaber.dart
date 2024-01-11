@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barberappointmentapp/src/view/signupasbabrber.dart';
 import 'package:provider/provider.dart';
+import '../controller/customer_reset_password_controller.dart';
 import '../viewmodel/barber_login_viewmodel.dart';
 import 'customer_reset_password.dart';
 import 'login_as_customer.dart';
@@ -81,13 +82,15 @@ class Loginasbabrber extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 50.0),
                   child: TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CustomerResetPassword(),
-                        ),
-                      );
-                    },
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(
+      builder: (context) => CustomerResetPassword(
+        controller: CustomerResetPasswordController(),
+      ),
+    ),
+  );
+},
                     child: const Text(
                       "Forgot your password?",
                       style: TextStyle(

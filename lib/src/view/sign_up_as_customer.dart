@@ -1,5 +1,10 @@
+
 import 'package:flutter/material.dart';
-import 'package:barberappointmentapp/src/view/signupasbabrber.dart';
+
+import 'package:provider/provider.dart';
+
+import '../viewmodel/customer_signUp_viewmodel.dart';
+import 'signupasbabrber.dart';
 
 class SignUpAsCustomer extends StatelessWidget {
   SignUpAsCustomer({super.key});
@@ -8,6 +13,7 @@ class SignUpAsCustomer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = Provider.of<CustomerSignUpViewModel>(context);
     return Scaffold(
       body: Form(
         key: formkey,
@@ -18,7 +24,8 @@ class SignUpAsCustomer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                  },
                   child: const Text(
                     "Sign Up",
                     style: TextStyle(
@@ -31,7 +38,12 @@ class SignUpAsCustomer extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignupAsBarber()));},
+                   onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SignupAsBarber()));
+                  },
                   child: const Text(
                     "Sign Up as Barber",
                     style: TextStyle(color: Colors.grey, fontSize: 28),
@@ -45,6 +57,7 @@ class SignUpAsCustomer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                onChanged: (value) => viewModel.setName(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Name",
@@ -54,35 +67,40 @@ class SignUpAsCustomer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                onChanged: (value) => viewModel.setEmail(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Email",
                 ),
               ),
             ),
-              Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "Phone Number",
-                ),
-              ),
-            ),
-            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                obscureText: true,
+                onChanged: (value) => viewModel.setPassword(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Password",
                 ),
               ),
             ),
-          
-            const SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
+              child: TextFormField(
+                onChanged: (value) => viewModel.setPhonenumber(int.parse(value)),
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: "Phone Number",
+                ),
+                keyboardType: TextInputType.number,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => viewModel.customerSignUp(context),
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 80, 182, 172),
                   foregroundColor: Colors.black,
@@ -108,9 +126,10 @@ class SignUpAsCustomer extends StatelessWidget {
                     child: const Text(
                       "Login",
                       style: TextStyle(
-                          color: Colors.black,
-                          decoration: TextDecoration.underline,
-                          decorationThickness: 2.0,),
+                        color: Colors.black,
+                        decoration: TextDecoration.underline,
+                        decorationThickness: 2.0,
+                      ),
                     ),
                   )
                 ],
