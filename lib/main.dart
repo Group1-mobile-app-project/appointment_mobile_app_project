@@ -1,4 +1,5 @@
 import 'package:barberappointmentapp/src/view/loginasbaber.dart';
+import 'package:barberappointmentapp/src/viewmodel/barber_drawer_viewmodel.dart';
 import 'package:barberappointmentapp/src/viewmodel/barber_requests_viewmodel.dart';
 import 'package:barberappointmentapp/src/viewmodel/barber_signUp_viewmodel.dart';
 import 'package:barberappointmentapp/src/viewmodel/manage_haircut_viewmodel.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => StatusViewModel()),
         ChangeNotifierProvider(create: (_) => BarberSignUpViewModel()),
         ChangeNotifierProvider(create: (_) => CustomerSignUpViewModel()),
-        
+        ChangeNotifierProvider(create: (_) => BarberDrawerViewModel()),
       ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,

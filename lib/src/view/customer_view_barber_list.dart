@@ -7,36 +7,7 @@ import '../viewmodel/drawer_view_model.dart';
 import 'customer_access_barber.dart';
 
 class CustomerViewBarberList extends StatelessWidget {
-  final List<Barber> barberList = [
-    Barber(
-        role: "",
-        address: "ashuas",
-        phoneNumber: 000000,
-        name: 'Barber 1',
-        imagePath:
-            'https://www.shutterstock.com/image-vector/vintage-barbershop-logo-vector-template-600nw-2179024709.jpg'),
-    Barber(
-        role: "",
-        address: "ashuas",
-        phoneNumber: 000000,
-        name: 'Barber 2',
-        imagePath:
-            'https://i.etsystatic.com/26972747/r/il/f90017/3518677370/il_fullxfull.3518677370_8ew8.jpg'),
-    Barber(
-        role: "",
-        address: "ashuas",
-        phoneNumber: 000000,
-        name: 'Barber 3',
-        imagePath:
-            'https://marketplace.canva.com/EAFRjQYrOoU/1/0/1600w/canva-black-and-white-modern-barber-shop-logo-wJRJ22uj-3A.jpg'),
-    Barber(
-        role: "",
-        address: "ashuas",
-        phoneNumber: 000000,
-        name: 'Barber 4',
-        imagePath:
-            'https://logowik.com/content/uploads/images/453_thebarber.jpg'),
-  ];
+  final List<Barber> barberList = [];
 
   CustomerViewBarberList({super.key});
 
@@ -57,9 +28,7 @@ class CustomerViewBarberList extends StatelessWidget {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                
-                ],
+                children: [],
               ),
             ),
             ListTile(

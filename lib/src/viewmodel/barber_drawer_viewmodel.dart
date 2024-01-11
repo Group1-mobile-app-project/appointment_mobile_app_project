@@ -1,17 +1,17 @@
-
+import 'package:barberappointmentapp/src/Firebase/services.dart';
+import 'package:barberappointmentapp/src/view/loginasbaber.dart';
+import 'package:barberappointmentapp/src/view/managehaircuts.dart';
+import 'package:barberappointmentapp/src/view/myhaircuts.dart';
+import 'package:barberappointmentapp/src/view/profile.dart';
+import 'package:barberappointmentapp/src/view/requests.dart';
+import 'package:barberappointmentapp/src/view/status.dart';
 import 'package:flutter/material.dart';
 
-import '../view/Costomer_profile.dart';
-import '../view/Custumer_request.dart';
-import '../view/Search_Costomer.dart';
-import '../view/customer_view_barber_list.dart';
-import '../view/login_as_customer.dart';
-
-class DrawerViewModel extends ChangeNotifier {
+class BarberDrawerViewModel extends ChangeNotifier {
   int _selectedIndex = 0;
 
   int get selectedIndex => _selectedIndex;
- DrawerHeader buildDrawerHeader() {
+  DrawerHeader buildDrawerHeader() {
     return const DrawerHeader(
       decoration: BoxDecoration(
         color: Color.fromARGB(255, 80, 182, 172),
@@ -25,6 +25,7 @@ class DrawerViewModel extends ChangeNotifier {
       ),
     );
   }
+
   void setIndex(int index, BuildContext context) {
     _selectedIndex = index;
     notifyListeners();
@@ -34,7 +35,7 @@ class DrawerViewModel extends ChangeNotifier {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => CustomerViewBarberList(),
+            builder: (context) => const MyHaircuts(),
           ),
         );
         break;
@@ -42,34 +43,38 @@ class DrawerViewModel extends ChangeNotifier {
         Navigator.pop(context);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const CRequests()),
+          MaterialPageRoute(builder: (context) => const Requests()),
         );
         break;
       case 2:
         Navigator.pop(context);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const Searchw()),
+          MaterialPageRoute(builder: (context) => const ManageHaircuts()),
         );
         break;
       case 3:
         Navigator.pop(context);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const ProfileC()),
+          MaterialPageRoute(builder: (context) => const StatusPage()),
         );
         break;
       case 4:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => LoginAsCustomer()),
+          MaterialPageRoute(builder: (context) => const ProfilePage()),
         );
         break;
-        
+      case 5:
+        Firebase.auth.signOut();
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Loginasbabrber()),
+        );
+        break;
       default:
         break;
     }
   }
-
-  
 }

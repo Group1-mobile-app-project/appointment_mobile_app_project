@@ -46,6 +46,7 @@ class BarberSignUpViewModel extends ChangeNotifier {
       );
 
       Barber barber = Barber(
+        uid :Firebase.auth.currentUser!.uid,
         name: name,
         phoneNumber: phonenumber,
         address: address,
