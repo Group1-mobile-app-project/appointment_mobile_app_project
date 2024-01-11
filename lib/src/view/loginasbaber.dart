@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:barberappointmentapp/src/view/signupasbabrber.dart';
 import 'package:provider/provider.dart';
-import '../model/barber_model.dart';
 import '../viewmodel/barber_login_viewmodel.dart';
 import 'customer_reset_password.dart';
 import 'login_as_customer.dart';
@@ -67,6 +66,7 @@ class Loginasbabrber extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                obscureText: true,
                 onChanged: (value) => viewModel.setPassword(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -101,7 +101,7 @@ class Loginasbabrber extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-              onPressed: () => viewModel.loginBarber(context,barberList ),
+              onPressed: () => viewModel.logIn(context),
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 80, 182, 172),
                   foregroundColor: Colors.black,

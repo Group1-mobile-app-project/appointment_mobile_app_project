@@ -1,22 +1,28 @@
-
 class Barber {
   final String? email;
   final String? password;
+  final String? role;
+  final int phoneNumber;
+  final String address;
   final String name;
   final String imagePath;
-
   Barber({
-     this.email,
-     this.password,
     required this.name,
+    required this.phoneNumber,
+    required this.address,
+    this.email,
+    this.password,
+    required this.role,
     required this.imagePath,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'Name': name,
+      'Phone Number': phoneNumber,
+      'Address': address,
+      'role': role,
+      'imagePath': imagePath,
+    };
+  }
 }
-List<Barber> barberList = [
-  Barber(
-    email: 'pairaw2@gmail.com',
-    password: '12345',
-    name: 'Barber 1',
-    imagePath: 'https://www.shutterstock.com/image-vector/vintage-barbershop-logo-vector-template-600nw-2179024709.jpg',
-  ),
-];

@@ -1,5 +1,7 @@
+import 'package:barberappointmentapp/src/viewmodel/barber_signUp_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:barberappointmentapp/src/view/sign_up_as_customer.dart';
+import 'package:provider/provider.dart';
 
 class SignupAsBarber extends StatelessWidget {
   SignupAsBarber({super.key});
@@ -8,6 +10,7 @@ class SignupAsBarber extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = Provider.of<BarberSignUpViewModel>(context);
     return Scaffold(
       body: Form(
         key: formkey,
@@ -49,6 +52,7 @@ class SignupAsBarber extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                onChanged: (value) => viewModel.setName(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Name",
@@ -58,6 +62,7 @@ class SignupAsBarber extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                onChanged: (value) => viewModel.setEmail(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Email",
@@ -67,6 +72,8 @@ class SignupAsBarber extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                obscureText: true,
+                onChanged: (value) => viewModel.setPassword(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Password",
@@ -76,15 +83,18 @@ class SignupAsBarber extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                onChanged: (value) => viewModel.setPhonenumber(int.parse(value)),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Phone Number",
                 ),
+                keyboardType: TextInputType.number,
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
               child: TextFormField(
+                onChanged: (value) => viewModel.setAddress(value),
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: "Address",
@@ -95,7 +105,7 @@ class SignupAsBarber extends StatelessWidget {
               height: 10,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => viewModel.signUp(context),
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 80, 182, 172),
                   foregroundColor: Colors.black,
