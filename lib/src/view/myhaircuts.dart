@@ -1,6 +1,7 @@
 import 'package:barberappointmentapp/src/viewmodel/haircut_viewmodel.dart';
 import 'package:barberappointmentapp/src/widgets/barber_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -9,7 +10,7 @@ class MyHaircuts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future<List<Map<String, dynamic>>> haircuts = HaircutViewModel.allHaircuts;
+    final viewModel = Provider.of<HaircutViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -21,7 +22,7 @@ class MyHaircuts extends StatelessWidget {
       ),
       drawer: const BarberDrawer(),
       body: FutureBuilder<List<Map<String, dynamic>>>(
-        future: haircuts,
+        future: viewModel.allHaircuts,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator(); // or any loading indicator

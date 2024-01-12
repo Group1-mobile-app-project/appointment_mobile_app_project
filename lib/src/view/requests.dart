@@ -1,16 +1,18 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:barberappointmentapp/src/viewmodel/barber_requests_viewmodel.dart';
 import 'package:barberappointmentapp/src/widgets/barber_drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../Firebase/services.dart';
+
 class Requests extends StatelessWidget {
   const Requests({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Future<List<Map<String, dynamic>>> requests =
-        BarberRequestViewModel.allrequests;
     final viewModel = Provider.of<BarberRequestViewModel>(context);
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +25,7 @@ class Requests extends StatelessWidget {
       ),
       drawer: const BarberDrawer(),
       body: FutureBuilder<List<Map<String, dynamic>>>(
-        future: requests,
+        future: viewModel.allrequests,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const CircularProgressIndicator(); // or any loading indicator
@@ -37,10 +39,14 @@ class Requests extends StatelessWidget {
               itemBuilder: (context, index) {
                 String id = requests[index]['requestid'];
                 Timestamp datetime = requests[index]['DateTime'];
-                final DateTime = BarberRequestViewModel.formatDateTime(datetime);
+                String status = requests[index]['status'];
+                final DateTime = viewModel.formatDateTime(datetime);
                 return ListTile(
                   title: Text(id),
-                  subtitle:  Text(DateTime),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [Text(DateTime), Text(status)],
+                  ),
                   trailing: PopupMenuButton(
                     itemBuilder: (context) => <PopupMenuEntry<String>>[
                       const PopupMenuItem(
@@ -54,10 +60,12 @@ class Requests extends StatelessWidget {
                     ],
                     onSelected: (String value) {
                       if (value == "accept") {
-                        viewModel.accept(context);
+                        viewModel.accept(context,
+                            Firebase.auth.currentUser!.uid, id, "Accepted");
                       }
                       if (value == "cancel") {
-                        viewModel.cancel(context);
+                        viewModel.cancel(context,
+                            Firebase.auth.currentUser!.uid, id, "Cancelled");
                       }
                     },
                   ),

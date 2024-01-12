@@ -5,10 +5,10 @@ import '../Firebase/services.dart';
 import '../model/barber_requests.dart';
 
 class BarberRequestViewModel extends ChangeNotifier {
-  static Future<List<Map<String, dynamic>>> allrequests =
+  Future<List<Map<String, dynamic>>> allrequests =
       BarberRequests.getAllRequestsForCustomer(Firebase.auth.currentUser!.uid);
 
-  static String formatDateTime(Timestamp dateTime) {
+  String formatDateTime(Timestamp dateTime) {
     DateTime date = dateTime.toDate();
     String formattedDate = "${date.day}/${date.month}/${date.year}";
 
@@ -23,7 +23,33 @@ class BarberRequestViewModel extends ChangeNotifier {
     return "$formattedDate $formattedTime";
   }
 
-  Future<void> accept(BuildContext context) {
+  Future<void> updateStatus(String userId, String id, String newStatus) async {
+    try {
+      CollectionReference requestsCollection = FirebaseFirestore.instance
+          .collection('requests')
+          .doc(userId)
+          .collection('customerid');
+
+      QuerySnapshot querySnapshot =
+          await requestsCollection.where('requestid', isEqualTo: id).get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        for (QueryDocumentSnapshot documentSnapshot in querySnapshot.docs) {
+          DocumentReference documentReference = documentSnapshot.reference;
+          await documentReference.update({'status': newStatus});
+        }
+      } else {
+        debugPrint('Error updating status');
+      }
+
+      debugPrint('Status updated successfully.');
+    } catch (e) {
+      debugPrint('Error updating status: $e');
+      // Handle the error as needed
+    }
+  }
+
+  Future<void> accept(BuildContext context,String userId,String id,String newStatus) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -33,7 +59,9 @@ class BarberRequestViewModel extends ChangeNotifier {
           actions: <Widget>[
             TextButton(
               onPressed: () {
+                updateStatus(userId,id,newStatus);
                 Navigator.of(context).pop();
+                notifyListeners();
               },
               style: TextButton.styleFrom(foregroundColor: Colors.blue),
               child: const Text('accept'),
@@ -51,7 +79,7 @@ class BarberRequestViewModel extends ChangeNotifier {
     );
   }
 
-  Future<void> cancel(BuildContext context) {
+  Future<void> cancel(BuildContext context,String userId,String id,String newStatus) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -61,6 +89,7 @@ class BarberRequestViewModel extends ChangeNotifier {
           actions: <Widget>[
             TextButton(
               onPressed: () {
+                updateStatus(userId,id,newStatus);
                 Navigator.of(context).pop();
               },
               style: TextButton.styleFrom(foregroundColor: Colors.red),

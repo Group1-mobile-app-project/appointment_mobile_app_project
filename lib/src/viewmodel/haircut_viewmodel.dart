@@ -7,6 +7,6 @@ class HaircutViewModel extends ChangeNotifier {
   String name = '';
   String imagePath = '';
 
-  static Future<List<Map<String, dynamic>>> allHaircuts = Haircut.getAllHaircuts(Firebase.auth.currentUser!.uid);
+  Future<List<Map<String, dynamic>>> allHaircuts = Haircut.getAllHaircuts(Firebase.auth.currentUser!.uid);
 
 }

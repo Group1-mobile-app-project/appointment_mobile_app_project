@@ -1,9 +1,4 @@
-import 'package:barberappointmentapp/src/view/loginasbaber.dart';
-import 'package:barberappointmentapp/src/view/managehaircuts.dart';
-import 'package:barberappointmentapp/src/view/myhaircuts.dart';
-import 'package:barberappointmentapp/src/view/profile.dart';
-import 'package:barberappointmentapp/src/view/requests.dart';
-import 'package:barberappointmentapp/src/view/status.dart';
+
 import 'package:barberappointmentapp/src/viewmodel/barber_drawer_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
