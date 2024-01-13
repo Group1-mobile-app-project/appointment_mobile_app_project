@@ -24,22 +24,21 @@ class Requests extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 80, 182, 172),
       ),
       drawer: const BarberDrawer(),
-      body: FutureBuilder<List<Map<String, dynamic>>>(
-        future: viewModel.allrequests,
+      body: StreamBuilder<QuerySnapshot>(
+        stream: viewModel.requests,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator(); // or any loading indicator
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
-            List<Map<String, dynamic>> requests = snapshot.data ?? [];
-
+            List<dynamic> request = snapshot.data!.docs.toList();
             return ListView.builder(
-              itemCount: requests.length,
+              itemCount: request.length,
               itemBuilder: (context, index) {
-                String id = requests[index]['requestid'];
-                Timestamp datetime = requests[index]['DateTime'];
-                String status = requests[index]['status'];
+                String id = request[index]['requestid'];
+                Timestamp datetime = request[index]['DateTime'];
+                String status = request[index]['status'];
                 final DateTime = viewModel.formatDateTime(datetime);
                 return ListTile(
                   title: Text(id),

@@ -1,5 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import '../Firebase/services.dart';
 
 class BarberRequests {
   final String requestId;
@@ -9,28 +12,18 @@ class BarberRequests {
   BarberRequests(
       {required this.requestId, required this.dateTime, required this.status});
 
-  static Future<List<Map<String, dynamic>>> getAllRequestsForCustomer(
-      String userId) async {
+  static Stream<QuerySnapshot>? getallrequests(String userId) {
     try {
-      QuerySnapshot<Map<String, dynamic>> querySnapshot =
-          await FirebaseFirestore.instance
-              .collection('requests')
-              .doc(userId)
-              .collection('customerid')
-              .get();
+      Stream<QuerySnapshot> querySnapshot = Firebase.db
+          .collection('requests')
+          .doc(userId)
+          .collection('customerid')
+          .snapshots();
 
-      List<Map<String, dynamic>> requestsList = [];
-
-      for (QueryDocumentSnapshot<Map<String, dynamic>> document
-          in querySnapshot.docs) {
-        Map<String, dynamic> request = document.data();
-        requestsList.add(request);
-      }
-
-      return requestsList;
+      return querySnapshot;
     } catch (e) {
       debugPrint("Error retrieving requests: $e");
-      return [];
+      return null;
     }
   }
 }

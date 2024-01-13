@@ -5,8 +5,10 @@ import '../Firebase/services.dart';
 import '../model/barber_requests.dart';
 
 class BarberRequestViewModel extends ChangeNotifier {
-  Future<List<Map<String, dynamic>>> allrequests =
-      BarberRequests.getAllRequestsForCustomer(Firebase.auth.currentUser!.uid);
+
+
+  Stream<QuerySnapshot>? requests =
+      BarberRequests.getallrequests(Firebase.auth.currentUser!.uid);
 
   String formatDateTime(Timestamp dateTime) {
     DateTime date = dateTime.toDate();
@@ -49,7 +51,8 @@ class BarberRequestViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> accept(BuildContext context,String userId,String id,String newStatus) {
+  Future<void> accept(
+      BuildContext context, String userId, String id, String newStatus) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -59,9 +62,9 @@ class BarberRequestViewModel extends ChangeNotifier {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                updateStatus(userId,id,newStatus);
-                Navigator.of(context).pop();
+                updateStatus(userId, id, newStatus);
                 notifyListeners();
+                Navigator.of(context).pop();
               },
               style: TextButton.styleFrom(foregroundColor: Colors.blue),
               child: const Text('accept'),
@@ -79,7 +82,8 @@ class BarberRequestViewModel extends ChangeNotifier {
     );
   }
 
-  Future<void> cancel(BuildContext context,String userId,String id,String newStatus) {
+  Future<void> cancel(
+      BuildContext context, String userId, String id, String newStatus) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -89,7 +93,8 @@ class BarberRequestViewModel extends ChangeNotifier {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                updateStatus(userId,id,newStatus);
+                updateStatus(userId, id, newStatus);
+                notifyListeners();
                 Navigator.of(context).pop();
               },
               style: TextButton.styleFrom(foregroundColor: Colors.red),
