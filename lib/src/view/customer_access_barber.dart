@@ -1,13 +1,13 @@
 // views/barber_account.dart
-import 'package:barberappointmentapp/src/Model/barber_model.dart';
 import 'package:barberappointmentapp/src/view/Haircut_style.dart';
 import 'package:flutter/material.dart';
-
+import 'package:barberappointmentapp/src/model/barber_model.dart';
 class BarberAccount extends StatelessWidget {
-  final Barber barber;
+ final Barber barber;
+  final String barberId; 
 
-  const BarberAccount({super.key, required this.barber});
-
+  const BarberAccount({Key? key, required this.barber, required this.barberId})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

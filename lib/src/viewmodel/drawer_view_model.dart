@@ -1,4 +1,5 @@
 
+import 'package:barberappointmentapp/src/Firebase/services.dart';
 import 'package:flutter/material.dart';
 
 import '../view/Costomer_profile.dart';
@@ -60,6 +61,7 @@ class DrawerViewModel extends ChangeNotifier {
         );
         break;
       case 4:
+       Firebase.auth.signOut();
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => LoginAsCustomer()),

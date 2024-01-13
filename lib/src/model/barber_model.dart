@@ -17,6 +17,18 @@ class Barber {
     required this.role,
     required this.imagePath,
   });
+ factory Barber.fromMap(Map<String, dynamic> map) {
+    return Barber(
+      uid: map['UID'] ?? '',
+      name: map['Name'] ?? '',
+      phoneNumber: map['Phone Number'] ?? 0,
+      address: map['Address'] ?? '',
+      email: map['email'],
+      password: map['password'],
+      role: map['role'],
+      imagePath: map['imagePath'] ?? '',
+    );
+  }
 
   Map<String, dynamic> toMap() {
     return {
