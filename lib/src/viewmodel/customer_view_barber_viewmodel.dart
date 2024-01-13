@@ -23,4 +23,5 @@ class BarberListViewModel extends ChangeNotifier {
       print('Error fetching barbers: $e');
     }
   }
+  
 }
