@@ -52,7 +52,7 @@ class SignUpAsCustomer extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: 100,
+              height: 50,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
@@ -131,9 +131,11 @@ class SignUpAsCustomer extends StatelessWidget {
                         decorationThickness: 2.0,
                       ),
                     ),
-                  )
+                  ),
+                   
                 ],
               ),
+              
             )
           ],
         ),

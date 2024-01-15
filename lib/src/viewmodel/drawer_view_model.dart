@@ -36,7 +36,7 @@ class DrawerViewModel extends ChangeNotifier {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => CustomerViewBarberList(),
+            builder: (context) => const CustomerViewBarberList(),
           ),
         );
         break;
@@ -123,14 +123,27 @@ class AppDrawer extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ClipOval(
-                        child: Image.network(
-                          userImage,
-                          width: 70,
-                          height: 70,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+         ClipOval(
+  child: userImage.isNotEmpty
+      ? Image.network(
+          userImage,
+          width: 70,
+          height: 70,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return const Icon(
+              Icons.account_circle,
+              size: 70,
+              color: Colors.grey,
+            );
+          },
+        )
+      : const Icon(
+          Icons.account_circle,
+          size: 70,
+          color: Colors.grey,
+        ),
+),
                       const SizedBox(height: 8),
                       Text(
                         userName,
@@ -174,6 +187,7 @@ class AppDrawer extends StatelessWidget {
                 ListTile(
                   title: const Text('Logout'),
                   onTap: () {
+                    Firebase.auth.signOut();
                     Provider.of<DrawerViewModel>(context, listen: false)
                         .setIndex(4, context);
                   },
