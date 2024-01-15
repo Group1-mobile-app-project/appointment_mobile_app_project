@@ -3,8 +3,6 @@ import 'package:barberappointmentapp/src/widgets/barber_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-
 class MyHaircuts extends StatelessWidget {
   const MyHaircuts({super.key});
 
@@ -25,7 +23,7 @@ class MyHaircuts extends StatelessWidget {
         future: viewModel.allHaircuts,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator(); // or any loading indicator
+            return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
@@ -44,22 +42,24 @@ class MyHaircuts extends StatelessWidget {
                   footer: Padding(
                     padding: const EdgeInsets.only(top: 40),
                     child: Center(
-                        child: Text(
-                      name,
-                      style: const TextStyle(fontSize: 20),
-                    )),
+                      child: Text(
+                        name,
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                    ),
                   ),
                   child: Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: imagePath != null
-                          ? Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Image.network(
-                                imagePath,
-                                fit: BoxFit.cover,
-                              ),
-                            )
-                          : const Icon(Icons.person)),
+                    padding: const EdgeInsets.all(18.0),
+                    child: imagePath != null
+                        ? Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.network(
+                              imagePath,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        : const Icon(Icons.person),
+                  ),
                 );
               },
             );

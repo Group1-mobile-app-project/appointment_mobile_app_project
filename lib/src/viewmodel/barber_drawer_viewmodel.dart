@@ -57,7 +57,7 @@ class BarberDrawerViewModel extends ChangeNotifier {
         Navigator.pop(context);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const StatusPage()),
+          MaterialPageRoute(builder: (context) => StatusPage()),
         );
         break;
       case 4:

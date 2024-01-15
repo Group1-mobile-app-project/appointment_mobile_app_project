@@ -34,22 +34,26 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(
               height: 100,
             ),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              onChanged: (value) => profileViewModel.setName(value),
+              decoration: const InputDecoration(
                 labelText: 'Name',
                 border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 10),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              onChanged: (value) =>
+                  profileViewModel.setPhonenumber(int.parse(value)),
+              decoration: const InputDecoration(
                 labelText: 'Phone Number',
                 border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 10),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              onChanged: (value) => profileViewModel.setAddress(value),
+              decoration: const InputDecoration(
                 labelText: 'Address',
                 border: OutlineInputBorder(),
               ),

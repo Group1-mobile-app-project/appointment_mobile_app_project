@@ -4,6 +4,7 @@ class Barber {
   final String? password;
   final String? role;
   final int phoneNumber;
+  final bool status;
   final String address;
   final String name;
   final String imagePath;
@@ -12,6 +13,7 @@ class Barber {
     required this.name,
     required this.phoneNumber,
     required this.address,
+    required this.status,
     this.email,
     this.password,
     required this.role,
@@ -23,6 +25,7 @@ class Barber {
       name: map['Name'] ?? '',
       phoneNumber: map['Phone Number'] ?? 0,
       address: map['Address'] ?? '',
+      status: map['Status'] ?? false,
       email: map['email'],
       password: map['password'],
       role: map['role'],
@@ -35,6 +38,7 @@ class Barber {
       'UID' : uid,
       'Name': name,
       'Phone Number': phoneNumber,
+      'Status': status,
       'Address': address,
       'role': role,
       'imagePath': imagePath,

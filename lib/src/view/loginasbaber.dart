@@ -82,15 +82,15 @@ class Loginasbabrber extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 50.0),
                   child: TextButton(
                     onPressed: () {
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(
-      builder: (context) => CustomerResetPassword(
-        controller: CustomerResetPasswordController(),
-      ),
-    ),
-  );
-},
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CustomerResetPassword(
+                            controller: CustomerResetPasswordController(),
+                          ),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "Forgot your password?",
                       style: TextStyle(

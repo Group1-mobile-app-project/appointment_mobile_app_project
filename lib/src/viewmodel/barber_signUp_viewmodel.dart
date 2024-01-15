@@ -49,6 +49,7 @@ class BarberSignUpViewModel extends ChangeNotifier {
         uid :Firebase.auth.currentUser!.uid,
         name: name,
         phoneNumber: phonenumber,
+        status: false,
         address: address,
         role: "Barber",
         imagePath: "",
