@@ -55,10 +55,10 @@ class ManageHaircuts extends StatelessWidget {
                         ],
                         onSelected: (String value) {
                           if (value == "change") {
-                            // ViewModel.change(context);
+                            ViewModel.change(context, haircut['name']);
                           }
                           if (value == "delete") {
-                            // ViewModel.delete(context, haircutId);
+                            ViewModel.delete(context, haircut['name']);
                           }
                         },
                       ),
@@ -70,20 +70,31 @@ class ManageHaircuts extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              
-              
+              ViewModel.pickImageAndUpdateState(ImageSource.gallery);
             },
             child: const Text('Select Haircut'),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 58, vertical: 10),
+            child: TextFormField(
+              onChanged: (value) => ViewModel.setHaircutName(value),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Haircut Name",
+              ),
+            ),
+          ),
           ElevatedButton(
             onPressed: () {
-              if(ViewModel.image != null){
-                print("clicked");
-                ViewModel.handlePickedImage(ViewModel.image);
+              if (ViewModel.image != null) {
+                ViewModel.storeHaircut();
               }
             },
             child: const Text('Upload'),
           ),
+          const SizedBox(
+            height: 100,
+          )
         ],
       ),
     );
